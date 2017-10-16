@@ -35,6 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/AlgoritmosArbol.o \
+	${OBJECTDIR}/Arbol/NodoLH.o \
 	${OBJECTDIR}/Arbol/arrSPadre.o \
 	${OBJECTDIR}/Arbol/hijoIzqHD1.o \
 	${OBJECTDIR}/Arbol/hijoIzqHD2.o \
@@ -67,6 +69,16 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tp1-ci-1221-ii-3ra.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tp1-ci-1221-ii-3ra ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/AlgoritmosArbol.o: AlgoritmosArbol.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/AlgoritmosArbol.o AlgoritmosArbol.cpp
+
+${OBJECTDIR}/Arbol/NodoLH.o: Arbol/NodoLH.cpp
+	${MKDIR} -p ${OBJECTDIR}/Arbol
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Arbol/NodoLH.o Arbol/NodoLH.cpp
 
 ${OBJECTDIR}/Arbol/arrSPadre.o: Arbol/arrSPadre.cpp
 	${MKDIR} -p ${OBJECTDIR}/Arbol

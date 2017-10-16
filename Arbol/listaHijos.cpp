@@ -1,35 +1,35 @@
 /* 
- * File:   ListaHijos.cpp
+ * File:   listaHijos.cpp
  * Author: Jimmy
  * 
  * Created on 9 de octubre de 2017, 12:29 PM
  */
 
 #include <iostream>
-#include "ListaHijos.h"
+#include "listaHijos.h"
 using namespace std;
 
-ListaHijos::ListaHijos() {
+listaHijos::listaHijos() {
 }
 
-ListaHijos::ListaHijos(const ListaHijos& orig) {
+listaHijos::listaHijos(const listaHijos& orig) {
 }
 
-ListaHijos::~ListaHijos() {
+listaHijos::~listaHijos() {
 }
 
-void ListaHijos::iniciar() {
-    primero = new Nodo();
+void listaHijos::iniciar() {
+    primero = new NodoLH();
     cantidadNodos = 0;
 }
 
-void ListaHijos::destruir() {
-    Nodo *temp = primero;
-    Nodo *aux = new Nodo();
-    Nodo *aux2 = new Nodo();
+void listaHijos::destruir() {
+    nodo temp = primero;
+    nodo aux = new NodoLH();
+    nodo aux2 = new NodoLH();
 
     while (temp != 0) {
-        Nodo *hijo = temp->sig;
+        nodo hijo = temp->sig;
         while (hijo != 0) {
             aux = hijo->sig;
             delete hijo;
@@ -45,13 +45,13 @@ void ListaHijos::destruir() {
     delete primero;
 }
 
-void ListaHijos::vaciar() {
-    Nodo *temp = primero;
-    Nodo *aux = new Nodo();
-    Nodo *aux2 = new Nodo();
+void listaHijos::vaciar() {
+    nodo temp = primero;
+    nodo aux = new NodoLH();
+    nodo aux2 = new NodoLH();
 
     while (temp != 0) {
-        Nodo *hijo = temp->sig;
+        nodo hijo = temp->sig;
         while (hijo != 0) {
             aux = hijo->sig;
             delete hijo;
@@ -69,7 +69,7 @@ void ListaHijos::vaciar() {
 
 }
 
-bool ListaHijos::vacia() {
+bool listaHijos::vacia() {
     if (primero == 0) {
         return true;
     } else {
@@ -77,16 +77,16 @@ bool ListaHijos::vacia() {
     }
 }
 
-ListaHijos::Nodo* ListaHijos::agregarHijo(int e, int i, Nodo* n) {
-    Nodo *temp = new Nodo(e);
+listaHijos::nodo listaHijos::agregarHijo(int e, int i, nodo n) {
+    nodo temp = new NodoLH(e);
     temp->inferior = primero->inferior;
     primero->inferior = temp;
     cantidadNodos++;
 
-    Nodo *aux = new Nodo();
+    nodo aux = new NodoLH();
     aux->inferior = temp;
 
-    Nodo *iter = n->sig;
+    nodo iter = n->sig;
     if (i == 1) {
         aux->sig = iter;
         n->sig = aux;
@@ -103,19 +103,19 @@ ListaHijos::Nodo* ListaHijos::agregarHijo(int e, int i, Nodo* n) {
     return temp;
 }
 
-void ListaHijos::borrarHoja(Nodo* n) {
+void listaHijos::borrarHoja(nodo n) {
     //Eliminar de la lista de hijos del padre
-    Nodo *temp = primero;
+    nodo temp = primero;
     bool eliminado = false;
     while (temp != 0 && !eliminado) {
-        Nodo *hijo = temp->sig;
+        nodo hijo = temp->sig;
         while (hijo != 0 && !eliminado) {
             if (hijo->inferior == n) {
                 hijo->inferior = 0;
                 eliminado = true;
                 temp->cantidadHijos--;
                 //eliminar el nodo
-                Nodo *iter = temp->sig;
+                nodo iter = temp->sig;
                 if (iter == hijo) {
                     temp->sig = hijo->sig;
                 } else {
@@ -133,7 +133,7 @@ void ListaHijos::borrarHoja(Nodo* n) {
         temp = temp->inferior;
     }
     //eliminar de la lista principal
-    Nodo *aux = primero;
+    nodo aux = primero;
     while (aux->inferior != n && aux != 0) {
         aux = aux->inferior;
     }
@@ -145,20 +145,20 @@ void ListaHijos::borrarHoja(Nodo* n) {
 
 }
 
-void ListaHijos::ponerRaiz(int e) {
+void listaHijos::ponerRaiz(int e) {
     primero->etiqueta = e;
     cantidadNodos++;
 
 }
 
-ListaHijos::Nodo* ListaHijos::raiz() {
+listaHijos::nodo listaHijos::raiz() {
     return primero;
 }
 
-ListaHijos::Nodo* ListaHijos::padre(Nodo* n) {
-    Nodo *temp = primero;
+listaHijos::nodo listaHijos::padre(nodo n) {
+    nodo temp = primero;
     while (temp != 0) {
-        Nodo *hijo = temp->sig;
+        nodo hijo = temp->sig;
         while (hijo != 0) {
             if (hijo->inferior == n) {
                 return temp;
@@ -170,14 +170,14 @@ ListaHijos::Nodo* ListaHijos::padre(Nodo* n) {
     }
 }
 
-ListaHijos::Nodo* ListaHijos::hijoMasIzquierdo(Nodo* n) {
+listaHijos::nodo listaHijos::hijoMasIzquierdo(nodo n) {
     return n->sig->inferior;
 }
 
-ListaHijos::Nodo* ListaHijos::hermanoDerecho(Nodo* n) {
-    Nodo *temp = primero;
+listaHijos::nodo listaHijos::hermanoDerecho(nodo n) {
+    nodo temp = primero;
     while (temp != 0) {
-        Nodo *hijo = temp->sig;
+        nodo hijo = temp->sig;
         while (hijo != 0) {
             if (hijo->inferior == n) {
                 return hijo->sig->inferior;
@@ -189,28 +189,28 @@ ListaHijos::Nodo* ListaHijos::hermanoDerecho(Nodo* n) {
     }
 }
 
-int ListaHijos::etiqueta(Nodo* n) {
+int listaHijos::etiqueta(nodo n) {
     return n->etiqueta;
 }
 
-void ListaHijos::modEtiqueta(Nodo* n, int e) {
+void listaHijos::modEtiqueta(nodo n, int e) {
     n->etiqueta = e;
 }
 
-int ListaHijos::numHijos(Nodo* n) {
+int listaHijos::numHijos(nodo n) {
     return n->cantidadHijos;
 }
 
-int ListaHijos::numNodos() {
+int listaHijos::numNodos() {
     return cantidadNodos;
 }
 
-ListaHijos::Nodo* ListaHijos::traductor(int e) {
+listaHijos::nodo listaHijos::traductor(int e) {
 
 }
 
-void ListaHijos::Listar() {
-    Nodo *temp = primero;
+void listaHijos::Listar() {
+    nodo temp = primero;
     while (temp != 0) {
         cout << temp->etiqueta << "->";
         temp = temp->inferior;
@@ -219,8 +219,8 @@ void ListaHijos::Listar() {
 
 }
 
-void ListaHijos::ListarHijos(Nodo* n) {
-    Nodo *temp = n->sig;
+void listaHijos::ListarHijos(nodo n) {
+    nodo temp = n->sig;
     while (temp != 0) {
         cout << temp->inferior->etiqueta << "->";
         temp = temp->sig;

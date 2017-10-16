@@ -1,5 +1,5 @@
 /* 
- * File:   ListaHijos.h
+ * File:   listaHijos.h
  * Author: Jimmy
  *
  * Created on 9 de octubre de 2017, 12:29 PM
@@ -8,32 +8,16 @@
 #ifndef LISTAHIJOS_H
 #define LISTAHIJOS_H
 
-class ListaHijos {
+#include "NodoLH.h"
 
-    struct Nodo {
-        int etiqueta;
-        Nodo *sig;
-        Nodo *inferior;
-        int cantidadHijos;
-
-        Nodo() {
-            sig = 0;
-            inferior = 0;
-            cantidadHijos = 0;
-        }
-
-        Nodo(int e) {
-            etiqueta = e;
-            sig = 0;
-            inferior = 0;
-            cantidadHijos = 0;
-        }
-    };
+class listaHijos {
+    
+    typedef NodoLH *nodo;
 
 public:
-    ListaHijos();
-    ListaHijos(const ListaHijos& orig);
-    virtual ~ListaHijos();
+    listaHijos();
+    listaHijos(const listaHijos& orig);
+    virtual ~listaHijos();
 
     //EFE: Inicia un árbol(A) vacío.    
     //REQ:
@@ -58,17 +42,17 @@ public:
     //EFE: Agrega un hijo al nodo n, con la etiqueta e.    
     //REQ: A no vacío, y n existente.
     //MOD: El árbol A.
-    Nodo* agregarHijo(int e, int i, Nodo* n);
+    nodo agregarHijo(int e, int i, nodo);
 
     //EFE: Elimina el n de A.    
     //REQ: Que n exista en el árbol. A no vacío.
     //MOD: El árbol A.
-    void borrarHoja(Nodo* n);
+    void borrarHoja(nodo);
 
     //EFE: Busca n y cambia su etiqueta por e.    
     //REQ: A no vacío y n valido.
     //MOD: Cambia la etiqueta de n por e.
-    void modEtiqueta(Nodo* n, int e);
+    void modEtiqueta(nodo, int e);
 
     //EFE: Pone la raíz al árbol con la etiqueta e.    
     //REQ: A inicializado.
@@ -78,27 +62,27 @@ public:
     //EFE: Retorna un nodo con la raiz A.    
     //REQ: A no vacío
     //MOD: 
-    Nodo* raiz();
+    nodo raiz();
 
     //EFE: Busca el padre de N.    
     //REQ: A no vacío y válido.
     //MOD:
-    Nodo* padre(Nodo* n);
+    nodo padre(nodo);
 
     //EFE: Retorna el hijo que está más  a la izquierda de n.    
     //REQ: A inicializado, no vacío y n válido.
     //MOD:
-    Nodo* hijoMasIzquierdo(Nodo* n);
+    nodo hijoMasIzquierdo(nodo);
 
     //EFE: Retorna al hermano derecho inmediato de n.    
     //REQ: A no vacío, inicializado y n válido.
     //MOD:
-    Nodo* hermanoDerecho(Nodo* n);
+    nodo hermanoDerecho(nodo);
 
     //EFE: Retorna la etiqueta de n.    
     //REQ: A no vacío, inicializado y n válido.
     //MOD:
-    int etiqueta(Nodo* n);
+    int etiqueta(nodo);
 
     //EFE: Retorna el número de nodos.    
     //REQ: A inicializado y un contador.
@@ -108,16 +92,16 @@ public:
     //EFE: Retorna la cantidad de hijos de n.    
     //REQ: A no vacío, inicializado y n válido.
     //MOD:
-    int numHijos(Nodo* n);
+    int numHijos(nodo);
 
     void Listar();
 
-    Nodo* traductor(int e);
+    nodo traductor(int e);
 
-    void ListarHijos(Nodo *n);
+    void ListarHijos(nodo n);
 
 private:
-    Nodo *primero;
+    nodo primero;
     int cantidadNodos;
     
 };
