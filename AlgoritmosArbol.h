@@ -41,18 +41,28 @@ public:
     AlgoritmosArbol(const AlgoritmosArbol& orig);
     virtual ~AlgoritmosArbol();
     
-    //EFE:
-    //REQ:
+    //EFE: Devuelve el hermano izquierdo del nodo n.
+    //REQ: Arbol inicializado y nodo contenido en el arbol.
     //MOD:
-    NodoLH* hermanoIzq(Arbol* A, nodo);
+    NodoLH* hermanoIzq(Arbol* A, nodo n);
     
-    //EFE:
-    //REQ:
+    //EFE: Devuelve verdadero si el arbol tiene etiquetas repetidas, falso en caso contrario.
+    //REQ: Arbol inicializado.
+    //MOD:
+    bool etiquetasRepetidas(Arbol* A);
+    
+    //EFE: Devuelve la cantidad de niveles del arbol por analisis por Niveles.
+    //REQ: Arbol inicializado y nodo contenido en el arbol.
+    //MOD:
+    int numNivelesPorNiveles(Arbol* A, nodo raiz);
+    
+    //EFE: Devuelve la cantidad de niveles del arbol por analisis en Preorden.
+    //REQ: Arbol inicializado y nodo contenido en el arbol.
     //MOD:
     int numNivelesxPreOrden(Arbol* A, nodo raiz);
     
-    //EFE:
-    //REQ:
+    //EFE: Imprime en consola una lista con las etiquetas de los nodos por analisis en Preorden.
+    //REQ: Arbol inicializado y nodo contenido en el arbol.
     //MOD:
     void listarPreOrden(Arbol* A, nodo raiz);
     

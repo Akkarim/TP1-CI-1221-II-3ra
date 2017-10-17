@@ -42,6 +42,12 @@ NodoLH* AlgoritmosArbol::hermanoIzq(Arbol* a, nodo n) {
     }
 }
 
+bool AlgoritmosArbol::etiquetasRepetidas(Arbol* A){
+}
+
+int AlgoritmosArbol::numNivelesPorNiveles(Arbol* A, nodo raiz){
+}
+
 int AlgoritmosArbol::numNivelesxPreOrden(Arbol* A, nodo raiz) {
     //    int contador = 0;
     //    if(!A->vacia()){
