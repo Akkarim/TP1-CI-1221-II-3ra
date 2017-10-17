@@ -31,7 +31,9 @@ int main(int argc, char** argv) {
     AlgoritmosArbol alg;
     //cout << a.etiqueta(alg.hermanoIzq(&a, a.hermanoDerecho(a.hermanoDerecho(a.hijoMasIzquierdo(a.raiz())))));
     //alg.numNivelesxPreOrden(&a,a.raiz());
-    alg.listarPreOrden(&a,a.raiz());
+   int x = alg.profundidad(&a, a.raiz());
+   cout << x;
+   // alg.listarPreOrden(&a,a.raiz());
     
 
     return 0;
