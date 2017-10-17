@@ -63,18 +63,41 @@ int AlgoritmosArbol::numNivelesxPreOrden(Arbol* A, nodo raiz) {
     //    return contador++;
 }
 
+int AlgoritmosArbol::profundidad(Arbol* A, nodo n){
+}
+
+void AlgoritmosArbol::etiquetasNivel(Arbol* A, int nivel){
+}
+
+void AlgoritmosArbol::etiquetasHijos(Arbol* A, nodo padre){
+}
+
+void AlgoritmosArbol::borrarSubarbol(Arbol* A, nodo padre){
+}
+
+void AlgoritmosArbol::copiarArbol(Arbol* A){
+}
+
+bool AlgoritmosArbol::arbolesIguales(Arbol* A, Arbol* B){
+}
+
 void AlgoritmosArbol::listarPreOrden(Arbol* A, nodo raiz) {
     if (!A->vacia()) {
         cout << A->etiqueta(raiz) << "->";
         if (A->hijoMasIzquierdo(raiz) != 0) {
             listarPreOrden(A, A->hijoMasIzquierdo(raiz));
         }
-        if (A->hermanoDerecho(A->hijoMasIzquierdo(raiz)) != 0) {
+        else if (A->hermanoDerecho(A->hijoMasIzquierdo(raiz)) != 0) {
             listarPreOrden(A, A->hermanoDerecho(A->hijoMasIzquierdo(raiz)));
         }
     }
 }
 
+void AlgoritmosArbol::listarPostOrden(Arbol* A, nodo raiz){
+}
 
+void AlgoritmosArbol::listarPorNiveles(Arbol* A, nodo raiz){
+}
 
-
+nodo AlgoritmosArbol::buscarEtiqueta(Arbol* A, int e){
+}

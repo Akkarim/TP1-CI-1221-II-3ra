@@ -34,8 +34,6 @@ void hijoIzqHD2::destruirRe(Nodo* n) {
         aux = nh->hD;
         destruirRe(nh);
         nh = aux;
-        
-//        nh = nh->hD;
     }
     delete n;
 }

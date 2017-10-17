@@ -28,9 +28,11 @@ void hijoIzqHD3::destruir(){
 
 void hijoIzqHD3::destruirRe(Nodo* n){
     Nodo* nh = n->hijoMI;
+    Nodo* aux;
     while (nh){
+        aux = nh->hD;
         destruirRe(nh);
-        nh = nh->hD;
+        nh = aux;
     }
     delete n;
 }
