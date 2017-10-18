@@ -16,6 +16,7 @@
 using namespace std;
 
 AlgoritmosArbol::AlgoritmosArbol() {
+    numNiveles = 0;
 }
 
 AlgoritmosArbol::AlgoritmosArbol(const AlgoritmosArbol& orig) {
@@ -24,10 +25,9 @@ AlgoritmosArbol::AlgoritmosArbol(const AlgoritmosArbol& orig) {
 AlgoritmosArbol::~AlgoritmosArbol() {
 }
 
-NodoLH* AlgoritmosArbol::hermanoIzq(Arbol* a, nodo n) {
-    NodoLH *padr = new NodoLH();
-    padr = a->padre(n);
-    NodoLH *hIzq = a->hijoMasIzquierdo(padr);
+nodo AlgoritmosArbol::hermanoIzq(Arbol* a, nodo n) {
+    nodo padr = a->padre(n);
+    nodo hIzq = a->hijoMasIzquierdo(padr);
     if (hIzq != n) {
         while (a->hermanoDerecho(hIzq) != n && a->hermanoDerecho(hIzq) != 0) {
             hIzq = a->hermanoDerecho(hIzq);
@@ -42,32 +42,30 @@ NodoLH* AlgoritmosArbol::hermanoIzq(Arbol* a, nodo n) {
     }
 }
 
-bool AlgoritmosArbol::etiquetasRepetidas(Arbol* A){
+bool AlgoritmosArbol::etiquetasRepetidas(Arbol* A) {
 }
 
-int AlgoritmosArbol::numNivelesPorNiveles(Arbol* A, nodo n){ 
-}   
+int AlgoritmosArbol::numNivelesPorNiveles(Arbol* A, nodo n) {
+}
 
 int AlgoritmosArbol::numNivelesxPreOrden(Arbol* A, nodo raiz) {
-    //    int contador = 0;
-    //    if(!A->vacia()){
-    //        nodo n = raiz;
-    //        contador++;
-    //        nodo nh = A->hijoMasIzquierdo(n);
-    //        while(nh != 0){
-    //            contador++;
-    //            nh = A->hermanoDerecho(nh);
-    //            numNivelesxPreOrden(A, nh);
-    //        }
-    //    }
-    //    return contador++;
+    if (A->hijoMasIzquierdo(raiz) != 0) {
+        nodo nh = A->hijoMasIzquierdo(raiz);
+        numNiveles++;
+        while (nh != 0) {
+            numNivelesxPreOrden(A, nh);
+            nh = A->hermanoDerecho(nh);
+
+        }
+    }
+    return numNiveles;
 }
 
-int AlgoritmosArbol::profundidad(Arbol* A, nodo n){    // Lo recorre desde el nodo n hasta la raíz
+int AlgoritmosArbol::profundidad(Arbol* A, nodo n) { // Lo recorre desde el nodo n hasta la raíz
     int contador = 0;
-    if (n != A->raiz()){
+    if (n != A->raiz()) {
         nodo nh = n; // Nodo hijo
-        while (nh != A->raiz()){
+        while (nh != A->raiz()) {
             nh = A->padre(nh);
             contador++;
         }
@@ -75,38 +73,61 @@ int AlgoritmosArbol::profundidad(Arbol* A, nodo n){    // Lo recorre desde el no
     return contador;
 }
 
-void AlgoritmosArbol::etiquetasNivel(Arbol* A, int nivel){
+void AlgoritmosArbol::etiquetasNivel(Arbol* A, int nivel) {
 }
 
-void AlgoritmosArbol::etiquetasHijos(Arbol* A, nodo padre){
+void AlgoritmosArbol::etiquetasHijos(Arbol* A, nodo n) {
+     nodo nh = A->hijoMasIzquierdo(n);
+    while (nh != 0) {
+        cout << A->etiqueta(nh) << "->";
+        nh = A->hermanoDerecho(nh);
+    }
 }
 
-void AlgoritmosArbol::borrarSubarbol(Arbol* A, nodo padre){
+void AlgoritmosArbol::borrarSubarbol(Arbol* A, nodo padre) {
 }
 
-void AlgoritmosArbol::copiarArbol(Arbol* A){
+void AlgoritmosArbol::copiarArbol(Arbol* A) {
 }
 
-bool AlgoritmosArbol::arbolesIguales(Arbol* A, Arbol* B){
+bool AlgoritmosArbol::arbolesIguales(Arbol* A, Arbol* B) {
 }
 
 void AlgoritmosArbol::listarPreOrden(Arbol* A, nodo raiz) {
-    if (!A->vacia()) {
-        cout << A->etiqueta(raiz) << "->";
-        if (A->hijoMasIzquierdo(raiz) != 0) {
-            listarPreOrden(A, A->hijoMasIzquierdo(raiz));
-        }
-        else if (A->hermanoDerecho(A->hijoMasIzquierdo(raiz)) != 0) {
-            listarPreOrden(A, A->hermanoDerecho(A->hijoMasIzquierdo(raiz)));
+    cout << A->etiqueta(raiz) << "->";
+    if (A->hijoMasIzquierdo(raiz) != 0) {
+        nodo nh = A->hijoMasIzquierdo(raiz);
+        while (nh != 0) {
+            listarPreOrden(A, nh);
+            nh = A->hermanoDerecho(nh);
         }
     }
 }
 
-void AlgoritmosArbol::listarPostOrden(Arbol* A, nodo raiz){
+void AlgoritmosArbol::listarPostOrden(Arbol* A, nodo raiz) {
 }
 
-void AlgoritmosArbol::listarPorNiveles(Arbol* A, nodo raiz){
+void AlgoritmosArbol::listarPorNiveles(Arbol* A, nodo raiz) {
 }
 
-nodo AlgoritmosArbol::buscarEtiqueta(Arbol* A, int e){
+nodo AlgoritmosArbol::buscarEtiqueta(Arbol* A, int e) {
+    nodo encontrado = 0;
+    if (!A->vacia()) {
+        encontrado = buscarRecursivo(A, A->raiz(), e);
+    }
+    return encontrado;
+}
+
+nodo AlgoritmosArbol::buscarRecursivo(Arbol* A, nodo raiz, int e) {
+    nodo resultado = 0;
+    if (raiz->etiqueta == e) {
+        resultado = raiz;
+    } else {
+        nodo nh = A->hijoMasIzquierdo(raiz);
+        while (nh != 0) {
+            resultado = buscarRecursivo(A, nh, e);
+            nh = A->hermanoDerecho(nh);
+        }
+    }
+    return resultado;
 }

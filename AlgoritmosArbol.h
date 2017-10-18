@@ -14,27 +14,27 @@
 #ifndef ALGORITMOSARBOL_H
 #define ALGORITMOSARBOL_H
 
-#include "Arbol/hijoIzqHD1.h"
-#include "Arbol/listaHijos.h"
 
 //#include "Arbol/arrSPadre.h"
-//#include "Arbol/hijoIzqHD1.h"
+#include "Arbol/hijoIzqHD1.h"
 //#include "Arbol/hijoIzqHD2.h"
 //#include "Arbol/hijoIzqHD3.h"
-#include "Arbol/listaHijos.h"
-#include "Cola/arrCircular.h"
+//#include "Arbol/listaHijos.h"
+//#include "Cola/arrCircular.h"
 
-#include "Arbol/NodoLH.h"
 
-//typedef arrSPadre arbol
-//typedef hijoIzqHD1 arbol;
-//typedef hijoIzqHD2 arbol;
-//typedef hijoIzqHD3 arbol;
-typedef listaHijos Arbol;
+#include "Arbol/NodohIHD1.h"
+//#include "Arbol/NodoLH.h"
 
-typedef arrCircular Cola;
+//typedef arrSPadre Arbol
+typedef hijoIzqHD1 Arbol;
+//typedef hijoIzqHD2 Arbol;
+//typedef hijoIzqHD3 Arbol;
+//typedef listaHijos Arbol;
 
-typedef NodoLH *nodo;
+
+//typedef NodoLH *nodo;
+typedef NodohIHD1 *nodo;
 
 class AlgoritmosArbol {
 public:
@@ -45,7 +45,7 @@ public:
     //EFE: Devuelve el hermano izquierdo del nodo n.
     //REQ: Arbol inicializado y nodo contenido en el arbol.
     //MOD:
-    NodoLH* hermanoIzq(Arbol* A, nodo n);
+    nodo hermanoIzq(Arbol* A, nodo n);
     
     //EFE: Devuelve verdadero si el arbol tiene etiquetas repetidas, falso en caso contrario.
     //REQ: Arbol inicializado.
@@ -75,7 +75,7 @@ public:
     //EFE: Imprime en consola una lista con las etiquetas de los hijos del nodo n.
     //REQ: Arbol inicializado y nodo contenido en el arbol.
     //MOD:
-    void etiquetasHijos(Arbol* A, nodo padre);
+    void etiquetasHijos(Arbol* A, nodo n);
     
     //EFE: Borra los nodos hijos a partir de un nodo padre.
     //REQ: Arbol inicializado y nodo contenido en el arbol.
@@ -113,7 +113,8 @@ public:
     nodo buscarEtiqueta(Arbol* A, int e);
     
 private:
-
+    nodo buscarRecursivo(Arbol* A, nodo, int e);
+    int numNiveles;
 };
 
 #endif /* ALGORITMOSARBOL_H */
