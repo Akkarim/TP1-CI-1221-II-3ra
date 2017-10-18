@@ -81,7 +81,7 @@ void AlgoritmosArbol::etiquetasNivel(Arbol* A, int nivel) {
 }
 
 void AlgoritmosArbol::etiquetasHijos(Arbol* A, nodo n) {
-     nodo nh = A->hijoMasIzquierdo(n);
+    nodo nh = A->hijoMasIzquierdo(n);
     while (nh != 0) {
         cout << A->etiqueta(nh) << "->";
         nh = A->hermanoDerecho(nh);
@@ -95,6 +95,29 @@ void AlgoritmosArbol::copiarArbol(Arbol* A) {
 }
 
 bool AlgoritmosArbol::arbolesIguales(Arbol* A, Arbol* B) {
+    bool resultado = true;
+    Cola cola1;
+    Cola cola2;
+    nodo nodo1;
+    nodo nodo2;
+    if ((A->raiz() && !B->raiz()) || (!A->raiz() && B->raiz()))
+        resultado = false;
+    else if(A->raiz() && B->raiz()){
+        if (A->etiqueta(A->raiz()) != B->etiqueta(B->raiz()))
+            resultado = false;
+        else{
+            cola1.iniciar();
+            cola2.iniciar();
+            nodo1 = A->raiz();
+            nodo2 = A->raiz();
+            cola1.encolar(nodo1->etiqueta);
+            cola2.encolar(nodo2->etiqueta);
+            while (resultado && !cola1.vacia()){
+                
+            }
+        }
+    }
+    return resultado;
 }
 
 void AlgoritmosArbol::listarPreOrden(Arbol* A, nodo raiz) {
