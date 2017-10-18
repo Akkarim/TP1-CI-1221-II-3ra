@@ -6,6 +6,7 @@
  */
 
 #include "hijoIzqHD1.h"
+#include "hijoIzqHD2.h"
 
 hijoIzqHD1::hijoIzqHD1() {
 }
@@ -14,7 +15,7 @@ hijoIzqHD1::~hijoIzqHD1() {
 }
 
 void hijoIzqHD1::iniciar() {
-    primero = new Nodo();
+    primero = new NodohIHD1();
     cantidadNodos = 0;
 
 }
@@ -24,15 +25,15 @@ void hijoIzqHD1::destruir() {
 }
 
 void hijoIzqHD1::vaciar() {
-    Nodo *inicio = primero;
+    nodo inicio = primero;
     vaciarRecursivo(inicio);
     cantidadNodos = 0;
 }
 
-void hijoIzqHD1::vaciarRecursivo(Nodo* n) {
+void hijoIzqHD1::vaciarRecursivo(nodo n) {
     if (n->hijos != 0) {
-        Nodo *iterador = n->hijoIzq;
-        Nodo *aux = new Nodo();
+        nodo iterador = n->hijoIzq;
+        nodo aux = new NodohIHD1();
         while (iterador != 0) {
             if (iterador->hermanoDer != 0) {
                 aux = iterador->hermanoDer;
@@ -43,7 +44,7 @@ void hijoIzqHD1::vaciarRecursivo(Nodo* n) {
                 return;
             }
         }
-        Nodo *nh = n->hijoIzq;
+        nodo nh = n->hijoIzq;
         while (nh != 0) {
             vaciarRecursivo(n);
             nh = nh->hermanoDer;
@@ -58,8 +59,8 @@ bool hijoIzqHD1::vacia() {
     return false;
 }
 
-Nodo* hijoIzqHD1::agregarHijo(int e, int i, Nodo* n) {
-    Nodo *temp = new Nodo(e);
+hijoIzqHD1::nodo hijoIzqHD1::agregarHijo(int e, int i, nodo n) {
+    nodo temp = new NodohIHD1(e);
     if (i == 1) {
         if (n->hijoIzq != 0) {
             temp->hermanoDer = n->hijoIzq;
@@ -69,7 +70,7 @@ Nodo* hijoIzqHD1::agregarHijo(int e, int i, Nodo* n) {
         }
     } else {
         int contador = 1;
-        Nodo *iterador = n->hijoIzq;
+        nodo iterador = n->hijoIzq;
         while (contador < i && iterador->hermanoDer != 0) {
             iterador = iterador->hermanoDer;
             contador++;
@@ -83,10 +84,10 @@ Nodo* hijoIzqHD1::agregarHijo(int e, int i, Nodo* n) {
     return temp;
 }
 
-void hijoIzqHD1::borrarHoja(Nodo* n) {
+void hijoIzqHD1::borrarHoja(nodo n) {
     //Recorrido en preOrden para encontrar al padre
-    Nodo *padre = preOrden(primero, n);
-    Nodo *iterador = padre->hijoIzq;
+    nodo padre = preOrden(primero, n);
+    nodo iterador = padre->hijoIzq;
     if (iterador->etiqueta == n->etiqueta) {
         padre->hijoIzq = iterador->hermanoDer;
         delete iterador;
@@ -101,34 +102,34 @@ void hijoIzqHD1::borrarHoja(Nodo* n) {
     padre->hijos--;
 }
 
-void hijoIzqHD1::modEtiqueta(Nodo* n, int e) {
+void hijoIzqHD1::modEtiqueta(nodo n, int e) {
     n->etiqueta = e;
 }
 
-Nodo* hijoIzqHD1::raiz() {
+hijoIzqHD1::nodo hijoIzqHD1::raiz() {
     return primero;
 }
 
 void hijoIzqHD1::ponerRaiz(int e) {
-    Nodo *temp = new Nodo(e);
+    nodo temp = new NodohIHD1(e);
     primero = temp;
     cantidadNodos++;
 }
 
-Nodo* hijoIzqHD1::padre(Nodo* n) {
-    Nodo *temp = primero;
+hijoIzqHD1::nodo hijoIzqHD1::padre(nodo n) {
+    nodo temp = primero;
     return preOrden(temp, n);
 }
 
-Nodo* hijoIzqHD1::hijoMasIzquierdo(Nodo* n) {
+hijoIzqHD1::nodo hijoIzqHD1::hijoMasIzquierdo(nodo n) {
     return n->hijoIzq;
 }
 
-Nodo* hijoIzqHD1::hermanoDerecho(Nodo* n) {
+hijoIzqHD1::nodo hijoIzqHD1::hermanoDerecho(nodo n) {
     return n->hermanoDer;
 }
 
-int hijoIzqHD1::etiqueta(Nodo* n) {
+int hijoIzqHD1::etiqueta(nodo n) {
     return n->etiqueta;
 }
 
@@ -136,18 +137,18 @@ int hijoIzqHD1::numNodos() {
     return cantidadNodos;
 }
 
-int hijoIzqHD1::numHijos(Nodo* n) {
+int hijoIzqHD1::numHijos(nodo n) {
     return n->hijos;
 }
 
-Nodo* hijoIzqHD1::traductor(int e) {
-    Nodo *temp = new Nodo(e);
+hijoIzqHD1::nodo hijoIzqHD1::traductor(int e) {
+    nodo temp = new NodohIHD1(e);
     return temp;
 }
 
-Nodo* hijoIzqHD1::preOrden(Nodo* inicio, Nodo* n) {
+hijoIzqHD1::nodo hijoIzqHD1::preOrden(nodo inicio, nodo n) {
     if (inicio->hijos != 0) {
-        Nodo *iterador = inicio->hijoIzq;
+        nodo iterador = inicio->hijoIzq;
         while (iterador != 0) {
             if (iterador->etiqueta == n->etiqueta) {
                 return inicio;
@@ -155,7 +156,7 @@ Nodo* hijoIzqHD1::preOrden(Nodo* inicio, Nodo* n) {
                 iterador = iterador->hermanoDer;
             }
         }
-        Nodo *nh = inicio->hijoIzq;
+        nodo nh = inicio->hijoIzq;
         while (nh != 0) {
             preOrden(nh, n);
             nh = nh->hermanoDer;

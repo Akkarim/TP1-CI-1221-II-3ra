@@ -8,32 +8,11 @@
 #ifndef HIJOIZQHD1_H
 #define HIJOIZQHD1_H
 
-struct Nodo {
-    int etiqueta;
-    Nodo *hijoIzq;
-    Nodo *hermanoDer;
-    int hijos;
-
-    Nodo() {
-        hermanoDer = 0;
-        hijoIzq = 0;
-        hijos = 0;
-
-    };
-
-    Nodo(int etiquetaR) {
-        etiqueta = etiquetaR;
-        hijoIzq = 0;
-        hermanoDer = 0;
-        hijos = 0;
-    }
-
-    ~Nodo() {
-    };
-
-};
+#include "NodohIHD1.h" 
 
 class hijoIzqHD1 {
+    typedef NodohIHD1 *nodo;
+    
 public:
     hijoIzqHD1();
     virtual ~hijoIzqHD1();
@@ -61,22 +40,22 @@ public:
     //EFE: Agrega un hijo al nodo n, con la etiqueta e.    
     //REQ: A no vacío, y n existente.
     //MOD: El árbol A.
-    Nodo* agregarHijo(int e, int i, Nodo* n);
+    nodo agregarHijo(int e, int i, nodo n);
 
     //EFE: Elimina el n de A.    
     //REQ: Que n exista en el árbol. A no vacío.
     //MOD: El árbol A.
-    void borrarHoja(Nodo* n);
+    void borrarHoja(nodo);
 
     //EFE: Busca n y cambia su etiqueta por e.    
     //REQ: A no vacío y n valido.
     //MOD: Cambia la etiqueta de n por e.
-    void modEtiqueta(Nodo* n, int e);
+    void modEtiqueta(nodo, int e);
 
     //EFE: Retorna un nodo con la raiz A.    
     //REQ: A no vacío
     //MOD: 
-    Nodo* raiz();
+    nodo raiz();
 
     //EFE: Pone la raíz al árbol con la etiqueta e.    
     //REQ: A inicializado.
@@ -86,22 +65,22 @@ public:
     //EFE: Busca el padre de N.    
     //REQ: A no vacío y válido.
     //MOD:
-    Nodo* padre(Nodo* n);
+    nodo padre(nodo);
 
     //EFE: Retorna el hijo que está más  a la izquierda de n.    
     //REQ: A inicializado, no vacío y n válido.
     //MOD:
-    Nodo* hijoMasIzquierdo(Nodo* n);
+    nodo hijoMasIzquierdo(nodo);
 
     //EFE: Retorna al hermano derecho inmediato de n.    
     //REQ: A no vacío, inicializado y n válido.
     //MOD:
-    Nodo* hermanoDerecho(Nodo* n);
+    nodo hermanoDerecho(nodo);
 
     //EFE: Retorna la etiqueta de n.    
     //REQ: A no vacío, inicializado y n válido.
     //MOD:
-    int etiqueta(Nodo* n);
+    int etiqueta(nodo);
 
     //EFE: Retorna el número de nodos.    
     //REQ: A inicializado y un contador.
@@ -111,27 +90,27 @@ public:
     //EFE: Retorna la cantidad de hijos de n.    
     //REQ: A no vacío, inicializado y n válido.
     //MOD:
-    int numHijos(Nodo* n);
+    int numHijos(nodo);
 
     //EFE: Convierte un elemento de tipo int en un nodo    
     //REQ: 
     //MOD:
-    Nodo* traductor(int e);
+    nodo traductor(int e);
 
 private:
-    Nodo *primero;
+    nodo primero;
     int cantidadNodos;
-    
-    
+
+
     //EFE: Retorna el padre del nodo n.   
     //REQ: A no vacío, inicializado y n válido.
     //MOD:
-    Nodo* preOrden(Nodo* inicio, Nodo* n);
-    
+    nodo preOrden(nodo, nodo);
+
     //EFE: Elimina todos los elementos del arbol  
     //REQ: A inicializado y no vacío
     //MOD: A
-    void vaciarRecursivo(Nodo* n);
+    void vaciarRecursivo(nodo);
 };
 
 #endif /* HIJOIZQHD1_H */
