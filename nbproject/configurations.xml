@@ -25,7 +25,6 @@
       <itemPath>AlgoritmosArbol.cpp</itemPath>
       <itemPath>Arbol/NodoLH.cpp</itemPath>
       <itemPath>Arbol/NodohIHD1.cpp</itemPath>
-      <itemPath>Cola/arrCircular.cpp</itemPath>
       <itemPath>Arbol/arrSPadre.cpp</itemPath>
       <itemPath>Arbol/hijoIzqHD1.cpp</itemPath>
       <itemPath>Arbol/hijoIzqHD2.cpp</itemPath>
@@ -90,8 +89,6 @@
       </item>
       <item path="Arbol/listaHijos.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Cola/arrCircular.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="Cola/arrCircular.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="TP1_B31494_B47040_B50060.pdf" ex="false" tool="3" flavor2="0">
@@ -151,8 +148,6 @@
       <item path="Arbol/listaHijos.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Arbol/listaHijos.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Cola/arrCircular.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Cola/arrCircular.h" ex="false" tool="3" flavor2="0">
       </item>

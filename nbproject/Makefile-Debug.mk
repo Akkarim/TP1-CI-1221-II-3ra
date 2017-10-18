@@ -43,7 +43,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/Arbol/hijoIzqHD2.o \
 	${OBJECTDIR}/Arbol/hijoIzqHD3.o \
 	${OBJECTDIR}/Arbol/listaHijos.o \
-	${OBJECTDIR}/Cola/arrCircular.o \
 	${OBJECTDIR}/main.o
 
 
@@ -110,11 +109,6 @@ ${OBJECTDIR}/Arbol/listaHijos.o: Arbol/listaHijos.cpp
 	${MKDIR} -p ${OBJECTDIR}/Arbol
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Arbol/listaHijos.o Arbol/listaHijos.cpp
-
-${OBJECTDIR}/Cola/arrCircular.o: Cola/arrCircular.cpp
-	${MKDIR} -p ${OBJECTDIR}/Cola
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Cola/arrCircular.o Cola/arrCircular.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
