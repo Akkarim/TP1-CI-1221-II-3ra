@@ -20,7 +20,7 @@
 //#include "Arbol/hijoIzqHD2.h"
 //#include "Arbol/hijoIzqHD3.h"
 //#include "Arbol/listaHijos.h"
-//#include "Cola/arrCircular.h"
+#include "Cola/arrCircular.h"
 
 
 #include "Arbol/NodohIHD1.h"
@@ -35,6 +35,7 @@ typedef hijoIzqHD1 Arbol;
 
 //typedef NodoLH *nodo;
 typedef NodohIHD1 *nodo;
+typedef arrCircular Cola;
 
 class AlgoritmosArbol {
 public:
