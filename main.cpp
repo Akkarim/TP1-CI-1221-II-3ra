@@ -14,40 +14,31 @@
 #include <cstdlib>
 #include <iostream>
 //#include "Arbol/listaHijos.h"
-#include "Arbol/hijoIzqHD1.h"
+//#include "Arbol/hijoIzqHD1.h"
 
-
-#include "AlgoritmosArbol.h"
+#include "Cola/arrCircular.h"
+//#include "AlgoritmosArbol.h"
 using namespace std;
 
 /*
  * 
  */
 int main(int argc, char** argv) {
-    hijoIzqHD1 a;
-    //listaHijos a;
-    a.iniciar();
-    a.ponerRaiz(8);
-    a.agregarHijo(3, 1, a.raiz());
-    a.agregarHijo(10, 2, a.raiz());
-    a.agregarHijo(13, 3, a.raiz());
-    a.agregarHijo(1, 1, a.hijoMasIzquierdo(a.raiz()));
-    a.agregarHijo(6, 2, a.hijoMasIzquierdo(a.raiz()));
-    a.agregarHijo(4, 1, a.hermanoDerecho(a.hijoMasIzquierdo(a.hijoMasIzquierdo(a.raiz()))));
-    a.agregarHijo(7, 2, a.hermanoDerecho(a.hijoMasIzquierdo(a.hijoMasIzquierdo(a.raiz()))));
-    a.agregarHijo(14,1,a.hermanoDerecho(a.hijoMasIzquierdo(a.raiz())));
-    
-    //cout << a.etiqueta(a.hermanoDerecho(a.hijoMasIzquierdo(a.raiz())));
-
-
-    AlgoritmosArbol alg;
-    //cout << a.etiqueta(alg.hermanoIzq(&a, a.hermanoDerecho(a.hermanoDerecho(a.hijoMasIzquierdo(a.raiz())))));
-
-    //cout << alg.numNivelesxPreOrden(&a,a.raiz());
-    //alg.listarPreOrden(&a, a.raiz());
-    nodo n = alg.buscarEtiqueta(&a, 3);
-    //alg.listarHijos(&a,a.hijoMasIzquierdo(a.raiz()));
-
+    arrCircular c;
+    c.iniciar();
+    c.encolar(1);
+    c.encolar(2);
+    c.encolar(3);
+    c.display();
+    cout << "Voy a desencolar " << endl;
+    c.desencolar();
+    c.display();
+    cout <<"Estoy encolando: " << endl;
+    c.encolar(4);
+    c.encolar(5);
+    c.display();
+    int x = c.frente();
+    cout << "El frente es: " << x;
     return 0;
 }
 

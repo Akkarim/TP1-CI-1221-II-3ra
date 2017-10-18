@@ -39,7 +39,7 @@ bool arrCircular::vacia() {
 
 void arrCircular::encolar(int e) {
     if ((rear + 1) % MAX == front) {
-        cout << "La cola esta llena we\n";
+        cout << "Queue is full\n";
     } else {
         if (front == -1) {
             front = 0;
@@ -65,7 +65,7 @@ int arrCircular::desencolar() {
 }
 
 int arrCircular::frente() {
-    return this->front;
+    return this->a[this->front];
 }
 
 void arrCircular::display() {

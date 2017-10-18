@@ -63,7 +63,6 @@ int AlgoritmosArbol::numNivelesxPreOrden(Arbol* A, nodo raiz) {
 
 
 int AlgoritmosArbol::profundidad(Arbol* A, nodo n) { // Lo recorre desde el nodo n hasta la raíz
-
     int contador = 0;
     if (n != A->raiz()) {
         nodo nh = n; // Nodo hijo

@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/AlgoritmosArbol.o \
 	${OBJECTDIR}/Arbol/NodoLH.o \
+	${OBJECTDIR}/Arbol/NodohIHD1.o \
 	${OBJECTDIR}/Arbol/arrSPadre.o \
 	${OBJECTDIR}/Arbol/hijoIzqHD1.o \
 	${OBJECTDIR}/Arbol/hijoIzqHD2.o \
@@ -79,6 +80,11 @@ ${OBJECTDIR}/Arbol/NodoLH.o: Arbol/NodoLH.cpp
 	${MKDIR} -p ${OBJECTDIR}/Arbol
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Arbol/NodoLH.o Arbol/NodoLH.cpp
+
+${OBJECTDIR}/Arbol/NodohIHD1.o: Arbol/NodohIHD1.cpp
+	${MKDIR} -p ${OBJECTDIR}/Arbol
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Arbol/NodohIHD1.o Arbol/NodohIHD1.cpp
 
 ${OBJECTDIR}/Arbol/arrSPadre.o: Arbol/arrSPadre.cpp
 	${MKDIR} -p ${OBJECTDIR}/Arbol
