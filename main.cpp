@@ -24,7 +24,7 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-    arrCircular c;
+    arrCircular<int> c;
     c.iniciar();
     c.encolar(1);
     c.encolar(2);

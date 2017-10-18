@@ -35,7 +35,7 @@ typedef hijoIzqHD1 Arbol;
 
 //typedef NodoLH *nodo;
 typedef NodohIHD1 *nodo;
-typedef arrCircular Cola;
+typedef arrCircular<int> Cola;
 
 class AlgoritmosArbol {
 public:
