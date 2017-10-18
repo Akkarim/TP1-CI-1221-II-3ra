@@ -63,8 +63,18 @@ int AlgoritmosArbol::numNivelesxPreOrden(Arbol* A, nodo raiz) {
     //    return contador++;
 }
 
-int AlgoritmosArbol::profundidad(Arbol* A, nodo n){
+int AlgoritmosArbol::profundidad(Arbol* A, nodo n){ // Lo recorre desde el nodo n hasta la raíz
+    int contador = 0;
+    if (n != A->raiz()) {
+        nodo nh = n; // Nodo hijo
+        while (nh != A->raiz()) {
+            nh = A->padre(nh);
+            contador++;
+        }
+    }
+    return contador;
 }
+
 
 void AlgoritmosArbol::etiquetasNivel(Arbol* A, int nivel){
 }
