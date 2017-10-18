@@ -42,11 +42,11 @@ int main(int argc, char** argv) {
 
     AlgoritmosArbol alg;
     //cout << a.etiqueta(alg.hermanoIzq(&a, a.hermanoDerecho(a.hermanoDerecho(a.hijoMasIzquierdo(a.raiz())))));
+
     //cout << alg.numNivelesxPreOrden(&a,a.raiz());
     //alg.listarPreOrden(&a, a.raiz());
     nodo n = alg.buscarEtiqueta(&a, 3);
     //alg.listarHijos(&a,a.hijoMasIzquierdo(a.raiz()));
-
 
     return 0;
 }
