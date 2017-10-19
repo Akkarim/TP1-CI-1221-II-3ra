@@ -5,6 +5,8 @@
  * Created on 15 de octubre de 2017, 11:07 PM
  */
 
+#include <list>
+
 #include "AlgoritmosArbol.h"
 
 using namespace std;
@@ -40,18 +42,18 @@ bool AlgoritmosArbol::etiquetasRepetidas(Arbol* A) {
     bool repetido = false;
     int i = 0;
     int buscador;
-    int ndo[100]; 
+    int ndo[100];
     nodo nh;
     nodo n;
     Cola c;
     c.iniciar();
     c.encolar(A->raiz());
-    while (!c.vacia()){
+    while (!c.vacia()) {
         n = c.desencolar();
         ndo[i] = n->etiqueta;
         buscador = 0;
-        while(buscador < i){
-            if (ndo[buscador] != ndo[i]){
+        while (buscador < i) {
+            if (ndo[buscador] != ndo[i]) {
                 buscador++;
             } else {
                 return true;
@@ -59,27 +61,13 @@ bool AlgoritmosArbol::etiquetasRepetidas(Arbol* A) {
         } // end of while
         i++;
         nh = A->hijoMasIzquierdo(n);
-        while(nh != 0){
+        while (nh != 0) {
             c.encolar(nh);
             nh = A->hermanoDerecho(nh);
         }
     }
     return repetido;
-}/*     if (!A->vacia()) {
-        Cola c;
-        c.iniciar();
-        c.encolar(A->raiz());
-        while (!c.vacia()) {
-            nodo temp = c.desencolar();
-            cout << temp->etiqueta << "->";
-            nodo nh = A->hijoMasIzquierdo(temp);
-            while (nh != 0) {
-                c.encolar(nh);
-                nh = A->hermanoDerecho(nh);
-            }
-        }
-    }
-    }*/
+}
 
 int AlgoritmosArbol::numNivelesPorNiveles(Arbol* A, nodo n) {
 }
@@ -110,7 +98,7 @@ int AlgoritmosArbol::profundidad(Arbol* A, nodo n) { // Lo recorre desde el nodo
 }
 
 void AlgoritmosArbol::etiquetasNivel(Arbol* A, int nivel) {
-    
+
 }
 
 void AlgoritmosArbol::etiquetasHijos(Arbol* A, nodo n) {
@@ -121,10 +109,27 @@ void AlgoritmosArbol::etiquetasHijos(Arbol* A, nodo n) {
     }
 }
 
-void AlgoritmosArbol::borrarSubarbol(Arbol* A, nodo padre) {
-}
+void AlgoritmosArbol::borrarSubarbol(Arbol* A, nodo n) {/* Se cae cuando pide HMI;
+    list<nodo> l;
+    list<nodo>::iterator it;
+    nodo nh;
+    it = l.begin();
+    l.push_front(n);
+    while (it != l.end()){
+        nh = A->hijoMasIzquierdo(*it);
+        while (nh != 0){
+            l.push_back(nh);
+            nh = A->hermanoDerecho(nh);
+        }
+        it++;
+    }
+    for (list<nodo>::reverse_iterator rit = l.rbegin(); rit != l.rend(); rit++){
+        A->borrarHoja(*rit);
+    }
+*/}
 
 void AlgoritmosArbol::copiarArbol(Arbol* A) {
+
 }
 
 bool AlgoritmosArbol::arbolesIguales(Arbol* A, Arbol* B) {

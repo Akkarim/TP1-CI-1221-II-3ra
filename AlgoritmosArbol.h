@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <array>
+#include <iterator>
 //#include "Arbol/arrSPadre.h"
 #include "Arbol/hijoIzqHD1.h"
 //#include "Arbol/hijoIzqHD2.h"
@@ -76,7 +77,7 @@ public:
     //EFE: Borra los nodos hijos a partir de un nodo padre.
     //REQ: Arbol inicializado y nodo contenido en el arbol.
     //MOD: El Arbol.
-    void borrarSubarbol(Arbol* A, nodo padre);
+    void borrarSubarbol(Arbol* A, nodo n);
     
     //EFE: Crea un nuevo arbol identico al arbol A.
     //REQ: Arbol inicializado.
