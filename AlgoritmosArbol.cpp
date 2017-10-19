@@ -69,8 +69,24 @@ bool AlgoritmosArbol::etiquetasRepetidas(Arbol* A) {
     return repetido;
 }
 
-int AlgoritmosArbol::numNivelesPorNiveles(Arbol* A, nodo n) {
-}
+/*int AlgoritmosArbol::numNivelesPorNiveles(Arbol* A) {
+    int n = 0;
+    if (!A->vacia()) {
+        Cola c;
+        c.iniciar();
+        c.encolar(A->raiz());
+        while (!c.vacia()) {
+            n++;
+            nodo temp = c.desencolar();
+            nodo nh = A->hijoMasIzquierdo(temp);
+            while (nh != 0) {
+                c.encolar(nh);
+                nh = A->hermanoDerecho(nh);
+            }
+        }
+    }
+    return n;
+}*/
 
 int AlgoritmosArbol::numNivelesxPreOrden(Arbol* A, nodo raiz) {
     if (A->hijoMasIzquierdo(raiz) != 0) {
@@ -98,18 +114,35 @@ int AlgoritmosArbol::profundidad(Arbol* A, nodo n) { // Lo recorre desde el nodo
 }
 
 void AlgoritmosArbol::etiquetasNivel(Arbol* A, int nivel) {
-
-}
-
-void AlgoritmosArbol::etiquetasHijos(Arbol* A, nodo n) {
-    nodo nh = A->hijoMasIzquierdo(n);
-    while (nh != 0) {
-        cout << A->etiqueta(nh) << "->";
-        nh = A->hermanoDerecho(nh);
+    Cola p;
+    p.iniciar();
+    if (!A->vacia()) {
+        Cola c;
+        c.iniciar();
+        c.encolar(A->raiz());
+        while (!c.vacia()) {
+            nodo temp = c.desencolar();
+            nodo nh = A->hijoMasIzquierdo(temp);
+            while (nh != 0) {
+                c.encolar(nh);
+                if (profundidad(A, nh) == nivel) {
+                    p.encolar(nh);
+                }
+                nh = A->hermanoDerecho(nh);
+            }
+        }
     }
 }
 
-void AlgoritmosArbol::borrarSubarbol(Arbol* A, nodo n) {/* Se cae cuando pide HMI
+    void AlgoritmosArbol::etiquetasHijos(Arbol* A, nodo n) {
+        nodo nh = A->hijoMasIzquierdo(n);
+        while (nh != 0) {
+            cout << A->etiqueta(nh) << "->";
+            nh = A->hermanoDerecho(nh);
+        }
+    }
+
+    void AlgoritmosArbol::borrarSubarbol(Arbol* A, nodo n) {/* Se cae cuando pide HMI
     list<nodo> l;
     list<nodo>::iterator it;
     nodo nh;
@@ -126,18 +159,35 @@ void AlgoritmosArbol::borrarSubarbol(Arbol* A, nodo n) {/* Se cae cuando pide HM
     for (list<nodo>::reverse_iterator rit = l.rbegin(); rit != l.rend(); rit++){
         A->borrarHoja(*rit);
     }
-*/}
+*/
+    }
 
-void AlgoritmosArbol::copiarArbol(Arbol* A) {
+    void AlgoritmosArbol::copiarArbol(Arbol * A) {
+       /* Arbol B;
+        B.iniciar();
+        B.ponerRaiz(A->etiqueta(A->raiz()));
+        return copiarRecursivo(A, A->raiz(), B, B.raiz());
+    }
 
+    Arbol AlgoritmosArbol::copiarRecursivo(Arbol* A, nodo raizA, Arbol B, nodo raizB) {
+        int contador = 1;
+        nodo nh = A->hijoMasIzquierdo(raizA);
+        while (nh != 0) {
+            B.agregarHijo(A->etiqueta(nh), contador, nh);
+            contador++;
+            nh = A->hermanoDerecho(nh);
+        }
+    }*/
 }
 
 bool AlgoritmosArbol::arbolesIguales(Arbol* A, Arbol* B) {
     bool resultado = true;
-    Cola cola1;
-    Cola cola2;
+    colaI cola1;
+    colaI cola2;
     nodo nodo1;
     nodo nodo2;
+    int etiqueta1;
+    int etiqueta2;
     if ((A->raiz() && !B->raiz()) || (!A->raiz() && B->raiz()))
         resultado = false;
     else if (A->raiz() && B->raiz()) {
@@ -146,11 +196,13 @@ bool AlgoritmosArbol::arbolesIguales(Arbol* A, Arbol* B) {
         else {
             cola1.iniciar();
             cola2.iniciar();
-            cola1.encolar(A->raiz());
-            cola2.encolar(B->raiz());
+            nodo1 = A->raiz();
+            nodo2 = B->raiz();
+            cola1.encolar(A->etiqueta(nodo1));
+            cola2.encolar(B->etiqueta(nodo2));
             while (resultado && !cola1.vacia()) {
-                nodo1 = cola1.desencolar();
-                nodo2 = cola2.desencolar();
+                etiqueta1 = cola1.desencolar();
+                etiqueta2 = cola2.desencolar();
                 nodo1 = A->hijoMasIzquierdo(nodo1);
                 nodo2 = B->hijoMasIzquierdo(nodo2);
                 while ((nodo1 || nodo2) && resultado) {
@@ -159,8 +211,8 @@ bool AlgoritmosArbol::arbolesIguales(Arbol* A, Arbol* B) {
                     else if (A->etiqueta(nodo1) != B->etiqueta(nodo2))
                         resultado = false;
                     else {
-                        cola1.encolar(nodo1);
-                        cola2.encolar(nodo2);
+                        cola1.encolar(A->etiqueta(nodo1));
+                        cola2.encolar(B->etiqueta(nodo2));
                         nodo1 = A->hermanoDerecho(nodo1);
                         nodo2 = A->hermanoDerecho(nodo2);
                     }

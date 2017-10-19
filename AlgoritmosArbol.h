@@ -83,6 +83,7 @@ public:
     //REQ: Arbol inicializado.
     //MOD: El nuevo arbol.
     void copiarArbol(Arbol* A);
+    Arbol copiarRecursivo(Arbol* A, nodo raizA, Arbol B, nodo raizB);
     
     //EFE: Retorna verdadero si los dos arboles son iguales y false en caso contrario.
     //REQ: Arbol A y B inicializados.
