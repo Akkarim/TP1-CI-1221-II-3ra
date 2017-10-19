@@ -76,7 +76,7 @@ public:
     
     //EFE: Borra los nodos hijos a partir de un nodo padre.
     //REQ: Arbol inicializado y nodo contenido en el arbol.
-    //MOD: El Arbol.
+    //MOD: El Arbol :v.
     void borrarSubarbol(Arbol* A, nodo n);
     
     //EFE: Crea un nuevo arbol identico al arbol A.

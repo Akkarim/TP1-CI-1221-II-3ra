@@ -109,7 +109,7 @@ void AlgoritmosArbol::etiquetasHijos(Arbol* A, nodo n) {
     }
 }
 
-void AlgoritmosArbol::borrarSubarbol(Arbol* A, nodo n) {/* Se cae cuando pide HMI;
+void AlgoritmosArbol::borrarSubarbol(Arbol* A, nodo n) {/* Se cae cuando pide HMI
     list<nodo> l;
     list<nodo>::iterator it;
     nodo nh;
