@@ -37,7 +37,7 @@ nodo AlgoritmosArbol::hermanoIzq(Arbol* a, nodo n) {
 }
 
 bool AlgoritmosArbol::etiquetasRepetidas(Arbol* A) {
-    
+
 }
 
 int AlgoritmosArbol::numNivelesPorNiveles(Arbol* A, nodo n) {
@@ -56,7 +56,6 @@ int AlgoritmosArbol::numNivelesxPreOrden(Arbol* A, nodo raiz) {
     return numNiveles;
 }
 
-
 int AlgoritmosArbol::profundidad(Arbol* A, nodo n) { // Lo recorre desde el nodo n hasta la raíz
     int contador = 0;
     if (n != A->raiz()) {
@@ -68,7 +67,6 @@ int AlgoritmosArbol::profundidad(Arbol* A, nodo n) { // Lo recorre desde el nodo
     }
     return contador;
 }
-
 
 void AlgoritmosArbol::etiquetasNivel(Arbol* A, int nivel) {
 
@@ -90,35 +88,35 @@ void AlgoritmosArbol::copiarArbol(Arbol* A) {
 
 bool AlgoritmosArbol::arbolesIguales(Arbol* A, Arbol* B) {
     bool resultado = true;
-    Cola cola1;
-    Cola cola2;
+    colaI cola1;
+    colaI cola2;
     nodo nodo1;
     nodo nodo2;
     int etiqueta1;
     int etiqueta2;
     if ((A->raiz() && !B->raiz()) || (!A->raiz() && B->raiz()))
         resultado = false;
-    else if(A->raiz() && B->raiz()){
+    else if (A->raiz() && B->raiz()) {
         if (A->etiqueta(A->raiz()) != B->etiqueta(B->raiz()))
             resultado = false;
-        else{
+        else {
             cola1.iniciar();
             cola2.iniciar();
             nodo1 = A->raiz();
             nodo2 = B->raiz();
             cola1.encolar(A->etiqueta(nodo1));
             cola2.encolar(B->etiqueta(nodo2));
-            while (resultado && !cola1.vacia()){
+            while (resultado && !cola1.vacia()) {
                 etiqueta1 = cola1.desencolar();
                 etiqueta2 = cola2.desencolar();
                 nodo1 = A->hijoMasIzquierdo(nodo1);
                 nodo2 = B->hijoMasIzquierdo(nodo2);
-                while ((nodo1 || nodo2) && resultado){
-                    if((nodo1 && !nodo2) || (!nodo1 && nodo2))
+                while ((nodo1 || nodo2) && resultado) {
+                    if ((nodo1 && !nodo2) || (!nodo1 && nodo2))
                         resultado = false;
-                    else if(A->etiqueta(nodo1) != B->etiqueta(nodo2))
+                    else if (A->etiqueta(nodo1) != B->etiqueta(nodo2))
                         resultado = false;
-                    else{
+                    else {
                         cola1.encolar(A->etiqueta(nodo1));
                         cola2.encolar(B->etiqueta(nodo2));
                         nodo1 = A->hermanoDerecho(nodo1);
@@ -146,6 +144,20 @@ void AlgoritmosArbol::listarPostOrden(Arbol* A, nodo raiz) {
 }
 
 void AlgoritmosArbol::listarPorNiveles(Arbol* A, nodo raiz) {
+    if (!A->vacia()) {
+        Cola c;
+        c.iniciar();
+        c.encolar(A->raiz());
+        while (!c.vacia()) {
+            nodo temp = c.desencolar();
+            cout << temp->etiqueta << "->";
+            nodo nh = A->hijoMasIzquierdo(temp);
+            while (nh != 0) {
+                c.encolar(nh);
+                nh = A->hermanoDerecho(nh);
+            }
+        }
+    }
 }
 
 nodo AlgoritmosArbol::buscarEtiqueta(Arbol* A, int e) {

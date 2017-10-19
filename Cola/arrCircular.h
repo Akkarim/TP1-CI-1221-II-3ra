@@ -14,7 +14,7 @@ using namespace std;
 template <class T> class arrCircular {
 public:
     struct{
-        int a[MAX];
+        T a[MAX];
         int front;
         int rear;
     };
