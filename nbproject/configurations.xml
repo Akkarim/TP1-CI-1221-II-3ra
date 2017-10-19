@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>AlgoritmosArbol.h</itemPath>
       <itemPath>Arbol/NodoLH.h</itemPath>
+      <itemPath>Arbol/NodohIHD1.h</itemPath>
       <itemPath>Cola/arrCircular.h</itemPath>
       <itemPath>Arbol/arrSPadre.h</itemPath>
       <itemPath>Arbol/hijoIzqHD1.h</itemPath>
@@ -23,7 +24,7 @@
                    projectFiles="true">
       <itemPath>AlgoritmosArbol.cpp</itemPath>
       <itemPath>Arbol/NodoLH.cpp</itemPath>
-      <itemPath>Cola/arrCircular.cpp</itemPath>
+      <itemPath>Arbol/NodohIHD1.cpp</itemPath>
       <itemPath>Arbol/arrSPadre.cpp</itemPath>
       <itemPath>Arbol/hijoIzqHD1.cpp</itemPath>
       <itemPath>Arbol/hijoIzqHD2.cpp</itemPath>
@@ -64,6 +65,10 @@
       </item>
       <item path="Arbol/NodoLH.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Arbol/NodohIHD1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Arbol/NodohIHD1.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Arbol/arrSPadre.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Arbol/arrSPadre.h" ex="false" tool="3" flavor2="0">
@@ -83,8 +88,6 @@
       <item path="Arbol/listaHijos.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Arbol/listaHijos.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Cola/arrCircular.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Cola/arrCircular.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -122,6 +125,10 @@
       </item>
       <item path="Arbol/NodoLH.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Arbol/NodohIHD1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Arbol/NodohIHD1.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Arbol/arrSPadre.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Arbol/arrSPadre.h" ex="false" tool="3" flavor2="0">
@@ -141,8 +148,6 @@
       <item path="Arbol/listaHijos.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Arbol/listaHijos.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Cola/arrCircular.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Cola/arrCircular.h" ex="false" tool="3" flavor2="0">
       </item>

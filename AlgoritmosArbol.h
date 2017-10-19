@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   AlgoritmosArbol.h
  * Author: Jimmy
@@ -14,13 +8,15 @@
 #ifndef ALGORITMOSARBOL_H
 #define ALGORITMOSARBOL_H
 
-
+#include <iostream>
+#include <array>
+#include <iterator>
 //#include "Arbol/arrSPadre.h"
 #include "Arbol/hijoIzqHD1.h"
 //#include "Arbol/hijoIzqHD2.h"
 //#include "Arbol/hijoIzqHD3.h"
 //#include "Arbol/listaHijos.h"
-//#include "Cola/arrCircular.h"
+#include "Cola/arrCircular.h"
 
 
 #include "Arbol/NodohIHD1.h"
@@ -35,7 +31,8 @@ typedef hijoIzqHD1 Arbol;
 
 //typedef NodoLH *nodo;
 typedef NodohIHD1 *nodo;
-
+typedef arrCircular<nodo> Cola;
+typedef arrCircular<int> colaI;
 class AlgoritmosArbol {
 public:
     AlgoritmosArbol();
@@ -79,13 +76,14 @@ public:
     
     //EFE: Borra los nodos hijos a partir de un nodo padre.
     //REQ: Arbol inicializado y nodo contenido en el arbol.
-    //MOD: El Arbol.
-    void borrarSubarbol(Arbol* A, nodo padre);
+    //MOD: El Arbol :v.
+    void borrarSubarbol(Arbol* A, nodo n);
     
     //EFE: Crea un nuevo arbol identico al arbol A.
     //REQ: Arbol inicializado.
     //MOD: El nuevo arbol.
     void copiarArbol(Arbol* A);
+    Arbol copiarRecursivo(Arbol* A, nodo raizA, Arbol B, nodo raizB);
     
     //EFE: Retorna verdadero si los dos arboles son iguales y false en caso contrario.
     //REQ: Arbol A y B inicializados.

@@ -37,12 +37,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/AlgoritmosArbol.o \
 	${OBJECTDIR}/Arbol/NodoLH.o \
+	${OBJECTDIR}/Arbol/NodohIHD1.o \
 	${OBJECTDIR}/Arbol/arrSPadre.o \
 	${OBJECTDIR}/Arbol/hijoIzqHD1.o \
 	${OBJECTDIR}/Arbol/hijoIzqHD2.o \
 	${OBJECTDIR}/Arbol/hijoIzqHD3.o \
 	${OBJECTDIR}/Arbol/listaHijos.o \
-	${OBJECTDIR}/Cola/arrCircular.o \
 	${OBJECTDIR}/main.o
 
 
@@ -80,6 +80,11 @@ ${OBJECTDIR}/Arbol/NodoLH.o: Arbol/NodoLH.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Arbol/NodoLH.o Arbol/NodoLH.cpp
 
+${OBJECTDIR}/Arbol/NodohIHD1.o: Arbol/NodohIHD1.cpp
+	${MKDIR} -p ${OBJECTDIR}/Arbol
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Arbol/NodohIHD1.o Arbol/NodohIHD1.cpp
+
 ${OBJECTDIR}/Arbol/arrSPadre.o: Arbol/arrSPadre.cpp
 	${MKDIR} -p ${OBJECTDIR}/Arbol
 	${RM} "$@.d"
@@ -104,11 +109,6 @@ ${OBJECTDIR}/Arbol/listaHijos.o: Arbol/listaHijos.cpp
 	${MKDIR} -p ${OBJECTDIR}/Arbol
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Arbol/listaHijos.o Arbol/listaHijos.cpp
-
-${OBJECTDIR}/Cola/arrCircular.o: Cola/arrCircular.cpp
-	${MKDIR} -p ${OBJECTDIR}/Cola
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Cola/arrCircular.o Cola/arrCircular.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}

@@ -1,15 +1,12 @@
-build/Debug/MinGW_TDM-Windows/main.o: main.cpp Arbol/listaHijos.h \
- Arbol/NodoLH.h AlgoritmosArbol.h Arbol/hijoIzqHD1.h Cola/arrCircular.h \
- Arbol/NodoLH.h
+build/Debug/MinGW_TDM-Windows/main.o: main.cpp Cola/arrCircular.h \
+ AlgoritmosArbol.h Arbol/hijoIzqHD1.h Arbol/NodohIHD1.h Arbol/NodohIHD1.h
 
-Arbol/listaHijos.h:
-
-Arbol/NodoLH.h:
+Cola/arrCircular.h:
 
 AlgoritmosArbol.h:
 
 Arbol/hijoIzqHD1.h:
 
-Cola/arrCircular.h:
+Arbol/NodohIHD1.h:
 
-Arbol/NodoLH.h:
+Arbol/NodohIHD1.h:
