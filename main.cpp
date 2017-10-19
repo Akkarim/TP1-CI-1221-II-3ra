@@ -11,6 +11,7 @@
 //#include "Arbol/hijoIzqHD1.h"
 
 #include "Cola/arrCircular.h"
+#include "AlgoritmosArbol.h"
 //#include "AlgoritmosArbol.h"
 using namespace std;
 
@@ -18,21 +19,23 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-    arrCircular<int> c;
-    c.iniciar();
-    c.encolar(1);
-    c.encolar(2);
-    c.encolar(3);
-    c.display();
-    cout << "Voy a desencolar " << endl;
-    c.desencolar();
-    c.display();
-    cout <<"Estoy encolando: " << endl;
-    c.encolar(4);
-    c.encolar(5);
-    c.display();
-    int x = c.frente();
-    cout << "El frente es: " << x;
+    hijoIzqHD1 a;
+    //listaHijos a;
+    a.iniciar();
+    a.ponerRaiz(8);
+    a.agregarHijo(3, 1, a.raiz());
+    a.agregarHijo(10, 2, a.raiz());
+    a.agregarHijo(13, 3, a.raiz());
+    a.agregarHijo(1, 1, a.hijoMasIzquierdo(a.raiz()));
+    a.agregarHijo(6, 2, a.hijoMasIzquierdo(a.raiz()));
+    a.agregarHijo(4, 1, a.hermanoDerecho(a.hijoMasIzquierdo(a.hijoMasIzquierdo(a.raiz()))));
+    a.agregarHijo(7, 2, a.hermanoDerecho(a.hijoMasIzquierdo(a.hijoMasIzquierdo(a.raiz()))));
+    a.agregarHijo(7,1,a.hermanoDerecho(a.hijoMasIzquierdo(a.raiz())));
+     AlgoritmosArbol alg;
+    bool x = alg.etiquetasRepetidas(&a);
+    cout << x;
+    
+    
     return 0;
 }
 

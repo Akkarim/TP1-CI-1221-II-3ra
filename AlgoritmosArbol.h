@@ -8,7 +8,8 @@
 #ifndef ALGORITMOSARBOL_H
 #define ALGORITMOSARBOL_H
 
-
+#include <iostream>
+#include <array>
 //#include "Arbol/arrSPadre.h"
 #include "Arbol/hijoIzqHD1.h"
 //#include "Arbol/hijoIzqHD2.h"

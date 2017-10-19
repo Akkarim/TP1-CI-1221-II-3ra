@@ -4,7 +4,7 @@
  * 
  * Created on 15 de octubre de 2017, 11:07 PM
  */
-#include <iostream>
+
 #include "AlgoritmosArbol.h"
 
 using namespace std;
@@ -37,8 +37,49 @@ nodo AlgoritmosArbol::hermanoIzq(Arbol* a, nodo n) {
 }
 
 bool AlgoritmosArbol::etiquetasRepetidas(Arbol* A) {
-
-}
+    bool repetido = false;
+    int i = 0;
+    int buscador;
+    int ndo[100]; 
+    nodo nh;
+    nodo n;
+    Cola c;
+    c.iniciar();
+    c.encolar(A->raiz());
+    while (!c.vacia()){
+        n = c.desencolar();
+        ndo[i] = n->etiqueta;
+        buscador = 0;
+        while(buscador < i){
+            if (ndo[buscador] != ndo[i]){
+                buscador++;
+            } else {
+                return true;
+            }
+        } // end of while
+        i++;
+        nh = A->hijoMasIzquierdo(n);
+        while(nh != 0){
+            c.encolar(nh);
+            nh = A->hermanoDerecho(nh);
+        }
+    }
+    return repetido;
+}/*     if (!A->vacia()) {
+        Cola c;
+        c.iniciar();
+        c.encolar(A->raiz());
+        while (!c.vacia()) {
+            nodo temp = c.desencolar();
+            cout << temp->etiqueta << "->";
+            nodo nh = A->hijoMasIzquierdo(temp);
+            while (nh != 0) {
+                c.encolar(nh);
+                nh = A->hermanoDerecho(nh);
+            }
+        }
+    }
+    }*/
 
 int AlgoritmosArbol::numNivelesPorNiveles(Arbol* A, nodo n) {
 }
@@ -69,7 +110,7 @@ int AlgoritmosArbol::profundidad(Arbol* A, nodo n) { // Lo recorre desde el nodo
 }
 
 void AlgoritmosArbol::etiquetasNivel(Arbol* A, int nivel) {
-
+    
 }
 
 void AlgoritmosArbol::etiquetasHijos(Arbol* A, nodo n) {
