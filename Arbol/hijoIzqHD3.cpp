@@ -7,16 +7,16 @@
 
 #include "hijoIzqHD3.h"
 
-Nodo* hijoIzqHD3::nodoNulo = 0;
-
 hijoIzqHD3::hijoIzqHD3(){
+    
+    cantidadnodos = 0;
 }
 
 hijoIzqHD3::~hijoIzqHD3(){
 }
 
 void hijoIzqHD3::iniciar(){
-    raizA = nodoNulo;
+    raizA = 0;
 }
 
 void hijoIzqHD3::destruir(){
@@ -26,9 +26,9 @@ void hijoIzqHD3::destruir(){
     }
 }
 
-void hijoIzqHD3::destruirRe(Nodo* n){
-    Nodo* nh = n->hijoMI;
-    Nodo* aux;
+void hijoIzqHD3::destruirRe(nodo n){
+    nodo nh = n->hijoMI;
+    nodo aux;
     while (nh){
         aux = nh->hD;
         destruirRe(nh);
@@ -39,8 +39,8 @@ void hijoIzqHD3::destruirRe(Nodo* n){
 
 void hijoIzqHD3::vaciar(){
     destruirRe(raizA);
-    raizA = nodoNulo;
-    cantidadNodos = 0;
+    raizA = 0;
+    cantidadnodos = 0;
 }
 
 bool hijoIzqHD3::vacia(){
@@ -51,80 +51,80 @@ bool hijoIzqHD3::vacia(){
 }
 
 void hijoIzqHD3::ponerRaiz(int etiqueta){
-    raizA = new Nodo(etiqueta);
-    cantidadNodos++;
+    raizA = new nodoHD3(etiqueta);
+    cantidadnodos++;
 }
 
-Nodo* hijoIzqHD3::agregarHijo(int e, int posicion, Nodo* n){
-    Nodo* nuevoNodo = new Nodo(e);
-    cantidadNodos++;
-    nuevoNodo->padre = n;
+hijoIzqHD3::nodo hijoIzqHD3::agregarHijo(int e, int posicion, nodo n){
+    nodo nuevonodo = new nodoHD3(e);
+    cantidadnodos++;
+    nuevonodo->padre = n;
     if(posicion == 1){
-        nuevoNodo->hD = n->hijoMI;
-        n->hijoMI = nuevoNodo;
-        if(nuevoNodo->hD)
-            nuevoNodo->hD->hI = nuevoNodo;
+        nuevonodo->hD = n->hijoMI;
+        n->hijoMI = nuevonodo;
+        if(nuevonodo->hD)
+            nuevonodo->hD->hI = nuevonodo;
     }else{
-        Nodo* iterador = n->hijoMI;
+        nodo iterador = n->hijoMI;
         for(int count = 1; count < (posicion-1); count++)
             iterador = iterador->hD;
-        nuevoNodo->hD = iterador->hD;
-        iterador->hD = nuevoNodo;
-        if(nuevoNodo->hD)
-            nuevoNodo->hD->hI = nuevoNodo;
+        nuevonodo->hD = iterador->hD;
+        iterador->hD = nuevonodo;
+        if(nuevonodo->hD)
+            nuevonodo->hD->hI = nuevonodo;
     }
-    return nuevoNodo;
+    return nuevonodo;
 }
 
-void hijoIzqHD3::borrarHoja(Nodo* n){
-    Nodo *iterador;
+void hijoIzqHD3::borrarHoja(nodo n){
+    nodo iterador;
     if(!n->hD && !n->hI){
         iterador = n->padre;
-        iterador->hijoMI = nodoNulo;
+        iterador->hijoMI = 0;
         delete n;
     }else if(n->hD && !n->hI){
         n->padre->hijoMI = n->hD;
-        n->hD->hI = nodoNulo;
+        n->hD->hI = 0;
         delete n;
     }else {
         n->hI->hD = n->hD;
         n->hD->hI = n->hI;
         delete n;
     }
-    cantidadNodos--;
+    cantidadnodos--;
 }
 
-void hijoIzqHD3::modEtiqueta(Nodo* n, int e){
+void hijoIzqHD3::modEtiqueta(nodo n, int e){
     n->etiqueta = e;
 }
 
-Nodo* hijoIzqHD3::raiz(){
+hijoIzqHD3::nodo hijoIzqHD3::raiz(){
     return raizA;
 }
 
-Nodo* hijoIzqHD3::padre(Nodo* n){
+hijoIzqHD3::nodo hijoIzqHD3::padre(nodo n){
     return n->padre;
 }
 
-Nodo* hijoIzqHD3::hijoMasIzquierdo(Nodo* n){
+hijoIzqHD3::nodo hijoIzqHD3::hijoMasIzquierdo(nodo n){
     return n->hijoMI;
 }
 
-Nodo* hijoIzqHD3::hermanoDerecho(Nodo* n){
+hijoIzqHD3::nodo hijoIzqHD3::hermanoDerecho(nodo n){
     return n->hD;
 }
 
-int hijoIzqHD3::etiqueta(Nodo* n){
+int hijoIzqHD3::etiqueta(nodo n){
     return n->etiqueta;
 }
 
-int hijoIzqHD3::numNodos(){
-    return cantidadNodos;
+int hijoIzqHD3::numnodos(){
+    return cantidadnodos;
 }
 
-int hijoIzqHD3::numHijos(Nodo* n){
+int hijoIzqHD3::numHijos(nodo n){
     int cantidadHijos = 0;
-    Nodo *iterador = n->hijoMI;
+    nodo iterador = n->hijoMI;
     while (iterador) {
         cantidadHijos++;
         iterador = iterador->hD;

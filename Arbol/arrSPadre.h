@@ -8,7 +8,7 @@
 #ifndef ARRSPADRE_H
 #define ARRSPADRE_H
 
-typedef int Nodo;
+typedef int nodo;
 static int ndoNull = 0;
 
 struct casilla{
@@ -49,55 +49,55 @@ public:
     //EFE: Agrega un hijo al nodo n, con la etiqueta e.    
     //REQ: A no vacío, y n existente.
     //MOD: El árbol A.
-    casilla agregarHijo(int e, Nodo n);
+    casilla agregarHijo(int e, nodo n);
 
     //EFE: Elimina el n de A.    
     //REQ: Que n exista en el árbol. A no vacío.
     //MOD: El árbol A.
-    void borrarHoja(Nodo n);
+    void borrarHoja(nodo n);
 
     //EFE: Busca n y cambia su etiqueta por e.    
     //REQ: A no vacío y n valido.
     //MOD: Cambia la etiqueta de n por e.
-    void modEtiqueta(Nodo n, int e);
+    void modEtiqueta(nodo n, int e);
 
     //EFE: Retorna un nodo con la raiz A.    
     //REQ: A no vacío
     //MOD: 
-    Nodo raiz();
+    nodo raiz();
 
     //EFE: Busca el padre de N.    
     //REQ: A no vacío y válido.
     //MOD:
-    Nodo padre(Nodo n);
+    nodo padre(nodo n);
 
     //EFE: Retorna el hijo que está más  a la izquierda de n.    
     //REQ: A inicializado, no vacío y n válido.
     //MOD:
-    Nodo hijoMasIzquierdo(Nodo n);
+    nodo hijoMasIzquierdo(nodo n);
 
     //EFE: Retorna al hermano derecho inmediato de n.    
     //REQ: A no vacío, inicializado y n válido.
     //MOD:
-    Nodo hermanoDerecho(Nodo n);
+    nodo hermanoDerecho(nodo n);
 
     //EFE: Retorna la etiqueta de n.    
     //REQ: A no vacío, inicializado y n válido.
     //MOD:
-    int etiqueta(Nodo n);
+    int etiqueta(nodo n);
 
     //EFE: Retorna el número de nodos.    
     //REQ: A inicializado y un contador.
     //MOD: 
-    int numNodos();
+    int numnodos();
 
     //EFE: Retorna la cantidad de hijos de n.    
     //REQ: A no vacío, inicializado y n válido.
     //MOD:
-    int numHijos(Nodo n);
+    int numHijos(nodo n);
 
 private:
-    int cantidadNodos;
+    int cantidadnodos;
     int ultLleno;
     casilla a[20];
 };

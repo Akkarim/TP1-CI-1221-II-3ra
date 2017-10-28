@@ -15,7 +15,7 @@ arrSPadre::~arrSPadre() {
 
 void arrSPadre::iniciar() {
     this->ultLleno = 0;
-    this->cantidadNodos = 0;
+    this->cantidadnodos = 0;
 }
 
 void arrSPadre::destruir() {
@@ -23,30 +23,30 @@ void arrSPadre::destruir() {
 
 void arrSPadre::vaciar() {
     this->ultLleno = 0;
-    this->cantidadNodos = 0;
+    this->cantidadnodos = 0;
 }
 
 bool arrSPadre::vacia() {
-    return this->cantidadNodos != 0;
+    return this->cantidadnodos != 0;
 }
 
 void arrSPadre::ponerRaiz(int etq) {
     a[0].etiqueta = etq;
     a[0].padre = -1;
-    this->cantidadNodos++;
+    this->cantidadnodos++;
     ndoNull++;
 }
 
-casilla arrSPadre::agregarHijo(int e, Nodo n) {
+casilla arrSPadre::agregarHijo(int e, nodo n) {
     a[this->ultLleno + 1].etiqueta = e;
     a[this->ultLleno + 1].padre = n;
-    this->cantidadNodos++;
+    this->cantidadnodos++;
     this->ultLleno++;
     ndoNull++;
     return a[n];
 }
 
-void arrSPadre::borrarHoja(Nodo n) {
+void arrSPadre::borrarHoja(nodo n) {
     int buscador = n;
     bool esHoja = true;
     while (buscador < this->ultLleno) {
@@ -60,29 +60,29 @@ void arrSPadre::borrarHoja(Nodo n) {
             a[n].etiqueta = a[n + 1].etiqueta;
             a[n].padre = a[n + 1].padre;
         }
-        this->cantidadNodos--;
+        this->cantidadnodos--;
         this->ultLleno--;
         ndoNull--;
     }
 }
 
-void arrSPadre::modEtiqueta(Nodo n, int e) { // O(1)
+void arrSPadre::modEtiqueta(nodo n, int e) { // O(1)
     a[n].etiqueta = e;
 }
 
-Nodo arrSPadre::raiz() {
+nodo arrSPadre::raiz() {
     return this->a[0].etiqueta;
 }
 
-Nodo arrSPadre::padre(Nodo n) {
+nodo arrSPadre::padre(nodo n) {
     int father = a[n].padre;
     return father;
 }
 
-Nodo arrSPadre::hijoMasIzquierdo(Nodo n) {
-    int buscador = n + 1;
-    while (buscador <= this->ultLleno) {
-        if (a[n].padre == n) {
+nodo arrSPadre::hijoMasIzquierdo(nodo n) {
+    nodo buscador = n;
+    while (buscador <= ultLleno) {
+        if (a[buscador].padre == n) {
             return buscador;
         }
         buscador++;
@@ -90,7 +90,7 @@ Nodo arrSPadre::hijoMasIzquierdo(Nodo n) {
     return ndoNull;
 }
 
-Nodo arrSPadre::hermanoDerecho(Nodo n) {
+nodo arrSPadre::hermanoDerecho(nodo n) {
     int i = n + 1;
     while (i <= this->ultLleno) {
         if (a[i].padre == a[n].padre) {
@@ -101,15 +101,15 @@ Nodo arrSPadre::hermanoDerecho(Nodo n) {
     return ndoNull;
 }
 
-int arrSPadre::etiqueta(Nodo n) {
+int arrSPadre::etiqueta(nodo n) {
     return a[n].etiqueta;
 }
 
-int arrSPadre::numNodos() {
-    return this->cantidadNodos;
+int arrSPadre::numnodos() {
+    return this->cantidadnodos;
 }
 
-int arrSPadre::numHijos(Nodo n) {
+int arrSPadre::numHijos(nodo n) {
     int buscador, i, contador = 0;
     buscador = this->hijoMasIzquierdo(n);
     i = buscador;

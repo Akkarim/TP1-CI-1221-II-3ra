@@ -6,7 +6,6 @@
  */
 
 #include "hijoIzqHD1.h"
-#include "hijoIzqHD2.h"
 
 hijoIzqHD1::hijoIzqHD1() {
 }

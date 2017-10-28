@@ -11,28 +11,33 @@
 #include <iostream>
 #include <array>
 #include <iterator>
-//#include "Arbol/arrSPadre.h"
-#include "Arbol/hijoIzqHD1.h"
-//#include "Arbol/hijoIzqHD2.h"
-//#include "Arbol/hijoIzqHD3.h"
-//#include "Arbol/listaHijos.h"
+
+
+//include "Arbol/hijoIzqHD1.h"
+#include "Arbol/hijoIzqHD3.h"
 #include "Cola/arrCircular.h"
 
 
-#include "Arbol/NodohIHD1.h"
-//#include "Arbol/NodoLH.h"
-
-//typedef arrSPadre Arbol
-typedef hijoIzqHD1 Arbol;
-//typedef hijoIzqHD2 Arbol;
-//typedef hijoIzqHD3 Arbol;
-//typedef listaHijos Arbol;
+//#include "Arbol/NodohIHD1.h"
+#include "Arbol/nodoHD3.h"
 
 
-//typedef NodoLH *nodo;
-typedef NodohIHD1 *nodo;
+
+
+//typedef hijoIzqHD1 Arbol;
+
+typedef hijoIzqHD3 Arbol;
+
+
+
+
+//typedef NodohIHD1 *nodo;
+typedef nodoHD3 *nodo;
+
 typedef arrCircular<nodo> Cola;
 typedef arrCircular<int> colaI;
+
+
 class AlgoritmosArbol {
 public:
     AlgoritmosArbol();
