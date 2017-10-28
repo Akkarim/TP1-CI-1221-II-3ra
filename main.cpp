@@ -7,6 +7,7 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <vector>
 //#include "Arbol/listaHijos.h"
 //#include "Arbol/hijoIzqHD1.h"
 
@@ -19,7 +20,9 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-hijoIzqHD1 a;
+    vector<nodo> vectorDatos;
+    vectorDatos.reserve(1000);
+    hijoIzqHD1 a;
     a.iniciar();
     a.ponerRaiz(8);
     a.agregarHijo(3, 1, a.raiz());
@@ -55,6 +58,16 @@ hijoIzqHD1 a;
     bool iguales = alg.arbolesIguales(&a,&b);
     //alg.borrarSubarbol(&a, a.hijoMasIzquierdo(a.padre()));
     bool rep = alg.etiquetasRepetidas(&a);
+    
     return 0;
 }
 
+//EFE: Llena el arbol.
+//REQ: Arbol inicializado y nodo contenido en el arbol.
+//MOD: El arbol.
+void LlenarArbol(Arbol arbol, nodo padre, int cantidadNodos, int etiquetas, vector<nodo> vectorDatos){
+    for(int i = 1; i <= cantidadNodos; i++){
+        vectorDatos[etiquetas-1] = arbol.agregarHijo(etiquetas, i, padre);
+        etiquetas++;
+    }
+}
