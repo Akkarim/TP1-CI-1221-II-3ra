@@ -8,6 +8,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <vector>
+#include <ctime>
+#include <time.h>
 //#include "Arbol/listaHijos.h"
 //#include "Arbol/hijoIzqHD1.h"
 
@@ -20,54 +22,27 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-    vector<nodo> vectorDatos;
-    vectorDatos.reserve(1000);
-    hijoIzqHD1 a;
-    a.iniciar();
-    a.ponerRaiz(8);
-    a.agregarHijo(3, 1, a.raiz());
-    a.agregarHijo(10, 2, a.raiz());
-    a.agregarHijo(13, 3, a.raiz());
-    a.agregarHijo(1, 1, a.hijoMasIzquierdo(a.raiz()));
-    a.agregarHijo(6, 2, a.hijoMasIzquierdo(a.raiz()));
-    a.agregarHijo(4, 1, a.hermanoDerecho(a.hijoMasIzquierdo(a.hijoMasIzquierdo(a.raiz()))));
-    a.agregarHijo(7, 2, a.hermanoDerecho(a.hijoMasIzquierdo(a.hijoMasIzquierdo(a.raiz()))));
-    a.agregarHijo(14, 1, a.hermanoDerecho(a.hijoMasIzquierdo(a.raiz())));
+    nodo ndo, nh;
+    AlgoritmosArbol algos;
+    Arbol a;
+    a.ponerRaiz(1);
+    ndo = a.raiz();
     
-    hijoIzqHD1 b;
-    b.ponerRaiz(8);
-    b.agregarHijo(3, 1, a.raiz());
-    b.agregarHijo(10, 2, a.raiz());
-    b.agregarHijo(13, 3, a.raiz());
-    b.agregarHijo(1, 1, a.hijoMasIzquierdo(a.raiz()));
-    b.agregarHijo(6, 2, a.hijoMasIzquierdo(a.raiz()));
-    b.agregarHijo(4, 1, a.hermanoDerecho(a.hijoMasIzquierdo(a.hijoMasIzquierdo(a.raiz()))));
-    b.agregarHijo(7, 2, a.hermanoDerecho(a.hijoMasIzquierdo(a.hijoMasIzquierdo(a.raiz()))));
-
-    AlgoritmosArbol alg;
-    //a.hijoMasIzquierdo(a.hijoMasIzquierdo(a.raiz()));
-    //cout << alg.numNivelesxPreOrden(&a,a.raiz());
-    //alg.listarPreOrden(&a, a.raiz());
-    //nodo n = alg.buscarEtiqueta(&a, 3);
-    //alg.listarHijos(&a,a.hijoMasIzquierdo(a.raiz()));
-    //alg.listarPorNiveles(&a);
-    //cout << alg.numNivelesPorNiveles(&a);
-    //alg.etiquetasNivel(&a,3);
-    //cout << alg.profundidad(&a,a.hijoMasIzquierdo(a.hijoMasIzquierdo(a.raiz())));
-    //alg.copiarArbol(&a);
-    bool iguales = alg.arbolesIguales(&a,&b);
-    //alg.borrarSubarbol(&a, a.hijoMasIzquierdo(a.padre()));
-    bool rep = alg.etiquetasRepetidas(&a);
+    int tam = 3; // Define el tamaño del árbol.
+    
+    
+    //Arbol lista
+    for (int i = 2; i<= tam; i++){
+        ndo = a.agregarHijo(i, i-1, ndo);
+    }
+    
+    clock_t iStart, iStop;
+    iStart = clock();
+    algos.copiarArbol(&a);
+    iStop = clock();
+    float secs = ((float)iStop-(float)iStart)/CLOCKS_PER_SEC;
+    cout<< "Time = "<< secs << "Para " << tam << endl;
     
     return 0;
 }
 
-//EFE: Llena el arbol.
-//REQ: Arbol inicializado y nodo contenido en el arbol.
-//MOD: El arbol.
-void LlenarArbol(Arbol arbol, nodo padre, int cantidadNodos, int etiquetas, vector<nodo> vectorDatos){
-    for(int i = 1; i <= cantidadNodos; i++){
-        vectorDatos[etiquetas-1] = arbol.agregarHijo(etiquetas, i, padre);
-        etiquetas++;
-    }
-}
