@@ -13,26 +13,19 @@
 #include <iterator>
 
 
-//include "Arbol/hijoIzqHD1.h"
-#include "Arbol/hijoIzqHD3.h"
+#include "Arbol/hijoIzqHD1.h"
+//#include "Arbol/hijoIzqHD3.h"
 #include "Cola/arrCircular.h"
 
 
-//#include "Arbol/NodohIHD1.h"
-#include "Arbol/nodoHD3.h"
+#include "Arbol/NodohIHD1.h"
+//#include "Arbol/nodoHD3.h"
 
+typedef hijoIzqHD1 Arbol;
+//typedef hijoIzqHD3 Arbol;
 
-
-
-//typedef hijoIzqHD1 Arbol;
-
-typedef hijoIzqHD3 Arbol;
-
-
-
-
-//typedef NodohIHD1 *nodo;
-typedef nodoHD3 *nodo;
+typedef NodohIHD1 *nodo;
+//typedef nodoHD3 *nodo;
 
 typedef arrCircular<nodo> Cola;
 typedef arrCircular<int> colaI;

@@ -22,28 +22,45 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
+
+    clock_t aStart, aStop, oStart, oStop;
+    float secs;
+    float secsOP;
+
     nodo ndo, nh;
     AlgoritmosArbol algos;
     Arbol a;
     a.ponerRaiz(1);
     ndo = a.raiz();
-    
-    int tam = 5000000; // Define el tamaño del árbol.
-    
-    
+
+    int tam = 35000; // Define el tamaño del árbol.
+
     //Arbol lista
-    for (int i = 1; i<= tam; i++){
-        ndo = a.agregarHijo(i, 1, ndo);
+    /*for (int i = 1; i <= tam; i++) {
+    ndo = a.agregarHijo(i, 1, ndo);  
+}*/
+
+    // Arbol con 2 niveles y "tam" cantidad de hijos para la raíz
+    float acm1pt = 0;
+    for (int i = 1; i <= tam; i++){    
+        nh = a.agregarHijo(i, i, a.raiz());
+        oStart = clock();
+        a.padre(nh);
+        oStop = clock();
+        acm1pt += ((float) oStop - (float) oStart) / CLOCKS_PER_SEC;
     }
-    
-    clock_t iStart, iStop;
-    
-    iStart = clock();
-    algos.copiarArbol(&a);
-    iStop = clock();
-    double secs = ((double)iStop-(double)iStart)/CLOCKS_PER_SEC;
-    cout<< "Time = "<< secs << " " << "Para " << tam << endl;
-    
+
+    aStart = clock();
+    algos.listarPreOrden(&a, a.raiz());
+    aStop = clock();
+
+    secs = ((float) aStop - (float) aStart) / CLOCKS_PER_SEC;
+    secsOP = ((float) oStop - (float) oStart) / CLOCKS_PER_SEC;
+
+
+    cout << "Time algo = " << secs << " " << "Para " << tam << endl;
+    cout << "Time OP = " << acm1pt << " " << "Para " << tam << endl;
+
     return 0;
 }
 

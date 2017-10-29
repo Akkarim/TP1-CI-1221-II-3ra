@@ -224,7 +224,7 @@ bool AlgoritmosArbol::arbolesIguales(Arbol* A, Arbol* B) {
 }
 
 void AlgoritmosArbol::listarPreOrden(Arbol* A, nodo raiz) {
-    cout << A->etiqueta(raiz) << "->";
+   // cout << A->etiqueta(raiz) << "->";
     if (A->hijoMasIzquierdo(raiz) != 0) {
         nodo nh = A->hijoMasIzquierdo(raiz);
         while (nh != 0) {
